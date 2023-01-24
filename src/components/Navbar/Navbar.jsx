@@ -6,19 +6,19 @@ const Navbar = () => {
     return (
         <nav className={classes.nav}>
             <div className={classes.item}>
-                <NavLink to='/profile' className = { (linkClass) => linkClass.isActive ? classes.active : classes.item }>Profile</NavLink>
+                <NavLink to='/profile' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>Profile</NavLink>
             </div>
             <div className={classes.item}>
-                <NavLink to='/dialogs' className = { (linkClass) => linkClass.isActive ? classes.active : classes.item }>Messages</NavLink>
+                <NavLink to='/dialogs' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>Messages</NavLink>
             </div>
             <div className={classes.item}>
-                <NavLink to='/news' className = { (linkClass) => linkClass.isActive ? classes.active : classes.item }>News</NavLink>
+                <NavLink to='/news' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>News</NavLink>
             </div>
             <div className={classes.item}>
-                <NavLink to='/music' className = { (linkClass) => linkClass.isActive ? classes.active : classes.item }>Music</NavLink>
+                <NavLink to='/music' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>Music</NavLink>
             </div>
             <div className={classes.item}>
-                <NavLink to='/settings' className = { (linkClass) => linkClass.isActive ? classes.active : classes.item }>Settings</NavLink>
+                <NavLink to='/settings' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>Settings</NavLink>
             </div>
         </nav>
     );
