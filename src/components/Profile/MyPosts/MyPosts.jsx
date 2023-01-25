@@ -2,6 +2,7 @@ import React from "react";
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 
+
 const MyPosts = () => {
 
     let postsData = [
@@ -17,7 +18,7 @@ const MyPosts = () => {
             <h3>my posts</h3>
             <div>
                 <div>
-                    <textarea name="" id="" cols="150" rows="5"></textarea>
+                    <textarea name="" id="" cols="120" rows="5"></textarea>
                 </div>
                 <div>
                     <button>Add post</button>
@@ -29,5 +30,6 @@ const MyPosts = () => {
         </div>
     );
 }
+
 
 export default MyPosts;
