@@ -1,4 +1,22 @@
-.dialogsItems a {
+.dialogsItems {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.item {
     text-decoration: none;
     color: white;
+    margin-left: 10px;
+}
+
+.active {
+    text-decoration: none;
+    color: rgb(39, 13, 13);
+    margin-left: 10px;
+}
+
+.dialogsItems a img {
+    width: 60px;
+    border-radius: 50%;
 }
