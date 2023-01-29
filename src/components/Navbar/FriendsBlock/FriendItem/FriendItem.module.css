@@ -1,0 +1,14 @@
+.friendItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.friendItem img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.friendName {
+    font-size: 14px;
+    text-align: center;
+}

@@ -22,9 +22,10 @@ const Navbar = (props) => {
             <div className={classes.item}>
                 <NavLink to='/settings' className={(linkClass) => linkClass.isActive ? classes.active : classes.item}>Settings</NavLink>
             </div>
-            <FriendsBlock />
+            <FriendsBlock friendsData={props.friendsData} />
         </nav>
     );
 }
+
 
 export default Navbar;

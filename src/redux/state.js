@@ -21,13 +21,14 @@ let state = {
             { id: 4, message: 'Fine' },
         ],
     },
-    /*sideBar: {
+    sideBar: {
         friendsData: [
             { id: 1, name: 'Person 1' },
             { id: 2, name: 'Person 2' },
             { id: 3, name: 'Person 3' },
         ],
-    },*/
+    },
 };
+
 
 export default state;

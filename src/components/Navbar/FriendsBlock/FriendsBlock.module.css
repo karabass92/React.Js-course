@@ -2,28 +2,12 @@
     margin-top: 40px;
 }
 
-.friendsBlock span {
+.friendsBlockTitle {
     font-size: 22px;
 }
 
-
-
-.friendItems {
+.friendsItems {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.friendItem {
-    display: flex;
-    flex-direction: column;
-}
-
-.friendItem img{
-    width: 60px;
-    border-radius: 50%;
-}
-
-.friendItem span{
-    font-size: 16px;
 }
