@@ -15,13 +15,15 @@ const MyPosts = (props) => {
 
     return (
         <div className={classes.postsBlock}>
-            <h3>my posts</h3>
-            <div>
+            <h3>My posts</h3>
+            <div className={classes.createPostBlock}>
                 <div>
-                    <textarea name="" id="" cols="120" rows="5" ref={newPostElement}></textarea>
+                    <textarea ref={newPostElement} className={classes.newPostText}></textarea>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={addPost} className={classes.addPostBtn}>
+                        Add post
+                    </button>
                 </div>
             </div>
             <div className={classes.posts}>
