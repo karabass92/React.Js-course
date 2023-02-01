@@ -24,6 +24,7 @@ let state = {
             { id: 3, message: "What's you doing?" },
             { id: 4, message: 'Fine' },
         ],
+        newMessageText: 'Type some text here'
     },
     sideBar: {
         friendsData: [
@@ -45,12 +46,27 @@ export let addPost = () => {
     )
     state.profilePage.newPostText = '';
     renderEntireTree(state);
-}
+};
+
+export let addMessage = () => {
+    state.dialogsPage.messagesData.push(
+        { 
+            id: 4, 
+            message: state.dialogsPage.newMessageText 
+        }
+    );
+    state.dialogsPage.newMessageText = '';
+    renderEntireTree(state);
+};
 
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     renderEntireTree(state);
-}
+};
 
+export let updateNewMessageText = (newText) => {
+    state.dialogsPage.newMessageText = newText;
+    renderEntireTree(state);
+};
 
 export default state;
