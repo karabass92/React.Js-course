@@ -19,7 +19,7 @@ const Dialogs = (props) => {
                 <div>
                    {messages} 
                 </div>
-                <SendMessageBlock updateNewMessageText={props.updateNewMessageText} newMessageText={props.newMessageText} addMessage={props.addMessage} />
+                <SendMessageBlock dispatch={props.dispatch} newMessageText={props.newMessageText} />
             </div>
 
         </div>
