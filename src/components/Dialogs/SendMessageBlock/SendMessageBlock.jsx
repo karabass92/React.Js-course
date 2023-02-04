@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './SendMessageBlock.module.css';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from "../../../redux/state";
+import { updateNewMessageTextActionCreator, addMessageActionCreator } from "../../../redux/dialogsReducer";
 
 
 const SendMessageBlock = (props) => {
