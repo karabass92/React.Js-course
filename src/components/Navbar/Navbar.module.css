@@ -13,3 +13,8 @@
 .item a.active {
     color: rgb(39, 13, 13);
 }
+
+.item {
+    border-bottom: 1px white solid;
+    padding: 5px 0;
+}
