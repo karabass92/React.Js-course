@@ -17,7 +17,7 @@ const SendMessageBlock = (props) => {
 
     return (
         <div className={classes.main}>
-            <textarea ref={messageText} value={props.newMessageText} onChange={onMessageTextChange} className={classes.textInput} />
+            <textarea placeholder="Type a new message here" ref={messageText} value={props.newMessageText} onChange={onMessageTextChange} className={classes.textInput} />
             <button onClick={addMessage} className={classes.button}>
                 Send message
             </button>

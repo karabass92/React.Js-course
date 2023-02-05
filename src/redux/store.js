@@ -11,7 +11,7 @@ let store = {
                 { id: 2, message: 'Hello i am post 2', likesCount: 14 },
                 { id: 3, message: 'Hello i am post 3', likesCount: 16 },
             ],
-            newPostText: 'some text for new post'
+            newPostText: ''
         },
         dialogsPage: {
             dialogsData: [
@@ -27,7 +27,7 @@ let store = {
                 { id: 3, message: "What's you doing?" },
                 { id: 4, message: 'Fine' },
             ],
-            newMessageText: 'Type some text here'
+            newMessageText: ''
         },
         sideBar: {
             friendsData: [
