@@ -1,24 +1,24 @@
 import React from "react";
 import classes from './SendMessageBlock.module.css';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from "../../../redux/dialogsReducer";
 
 
 const SendMessageBlock = (props) => {
+    
     let messageText = React.createRef();
 
     let onMessageTextChange = () => {
         let text = messageText.current.value;
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        props.changeMessageText(text);
     };
 
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+    let onAddMessage = () => {
+        props.addMessage();
     };
 
     return (
         <div className={classes.main}>
             <textarea placeholder="Type a new message here" ref={messageText} value={props.newMessageText} onChange={onMessageTextChange} className={classes.textInput} />
-            <button onClick={addMessage} className={classes.button}>
+            <button onClick={onAddMessage} className={classes.button}>
                 Send message
             </button>
         </div>
