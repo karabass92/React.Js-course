@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import MyContext from './StateContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const renderEntireTree = (state) => {
     root.render(
         <React.StrictMode>
-            <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
+            <MyContext.Provider value={store}>
+                <App store={store}/>
+            </MyContext.Provider>
         </React.StrictMode>
     );
 };
@@ -22,7 +25,7 @@ const renderEntireTree = (state) => {
 renderEntireTree(store.getState());
 
 
-store.subscribe( () => {
+store.subscribe(() => {
     let state = store.getState();
     renderEntireTree(state);
 });
