@@ -30,21 +30,24 @@ const dialogsReducer = (state = initialState, action) => {
                 }
             );
             state.newMessageText = '';
-            return state;
+            return Object.assign({}, state, { q: action.data });
         case UPDATE_NEW_MESSAGE_TEXT:
             state.newMessageText = action.newText;
-            return state;
+            return Object.assign({}, state, { q: action.data });
         default:
             return state;
     }
 }
 
+
 export const updateNewMessageTextActionCreator = (text) => {
     return { type: UPDATE_NEW_MESSAGE_TEXT, newText: text };
 };
 
+
 export const addMessageActionCreator = () => {
     return { type: ADD_MESSAGE };
 };
+
 
 export default dialogsReducer;

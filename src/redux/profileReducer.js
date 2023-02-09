@@ -22,21 +22,24 @@ const profileReducer = (state = initialSate, action) => {
             };
             state.postsData.push(newPost);
             state.newPostText = '';
-            return state;
-        case  UPDATE_NEW_TEXT_POST:
+            return Object.assign({}, state, { q: action.data });
+        case UPDATE_NEW_TEXT_POST:
             state.newPostText = action.newText;
-            return state;
+            return Object.assign({}, state, { q: action.data });
         default:
             return state;
     }
 }
 
+
 export const updateNewPostActionCreator = (text) => {
     return { type: UPDATE_NEW_TEXT_POST, newText: text };
 };
 
+
 export const addPostActionCreator = () => {
     return { type: ADD_POST };
 };
+
 
 export default profileReducer;
