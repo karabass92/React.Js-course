@@ -1,14 +1,16 @@
 import React from "react";
 import classes from './Dialogs.module.css';
-import DialogItem from "./DialogItems/DialogItems";
+import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItems/MessageItems";
-import SendMessageBlockContainer from "./SendMessageBlock/SendMessageBlockContainer";
 
 
 const Dialogs = (props) => {
 
-    let dialogs = props.store.getState().dialogsPage.dialogsData.map(d => <DialogItem name={d.name} id={d.id} />);
-    let messages = props.store.getState().dialogsPage.messagesData.map(m => <MessageItem message={m.message} />);
+    let dialogs = props.dialogsData.map(d => <DialogItem name={d.name} id={d.id} />);
+    let messages = props.messagesData.map(m => <MessageItem message={m.message} />);
+    let messageText = React.createRef();
+    let onMessageTextChange = () => { props.changeMessageText(messageText.current.value) };
+    let onAddMessage = () => { props.addMessage() };
 
     return (
         <div className={classes.dialogs}>
@@ -17,11 +19,13 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messages}>
                 <div>
-                   {messages} 
+                    {messages}
                 </div>
-                <SendMessageBlockContainer />
+                <div className={classes.main}>
+                    <textarea placeholder="Type a new message here" ref={messageText} value={props.newMessageText} onChange={onMessageTextChange} className={classes.textInput} />
+                    <button onClick={onAddMessage} className={classes.button}>Send message</button>
+                </div>
             </div>
-
         </div>
     );
 }

@@ -11,11 +11,11 @@ import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-const renderEntireTree = (state) => {
+const renderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <Provider store={store}>
-                <App store={store}/>
+                <App />
             </Provider>
         </React.StrictMode>
     );
@@ -23,12 +23,6 @@ const renderEntireTree = (state) => {
 
 
 renderEntireTree(store.getState());
-
-
-store.subscribe(() => {
-    let state = store.getState();
-    renderEntireTree(state);
-});
 
 
 reportWebVitals();

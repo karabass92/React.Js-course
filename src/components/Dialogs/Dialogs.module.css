@@ -16,4 +16,23 @@
     justify-content: space-between;
 }
 
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: rgb(111, 171, 173);
+}
+
+.textInput {
+    height: 40px;
+    width: 700px;
+    border-radius: 7px;
+    background-color: rgba(151, 207, 240, 0.507);
+}
+
 

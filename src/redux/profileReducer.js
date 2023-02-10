@@ -22,10 +22,10 @@ const profileReducer = (state = initialSate, action) => {
             };
             state.postsData.push(newPost);
             state.newPostText = '';
-            return Object.assign({}, state, { q: action.data });
+            return Object.assign({}, state);
         case UPDATE_NEW_TEXT_POST:
             state.newPostText = action.newText;
-            return Object.assign({}, state, { q: action.data });
+            return Object.assign({}, state);
         default:
             return state;
     }
