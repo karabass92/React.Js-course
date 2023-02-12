@@ -1,0 +1,54 @@
+.container {
+    padding: 15px;
+}
+
+.Userscontainer {
+    display: flex;
+    padding: 15px;
+    color: white;
+}
+
+.avatar {
+    border-right: 1px solid white;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.avatar img {
+    width: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+/*
+.avatar button {
+    width: 80px;
+    height: 20px;
+    margin-top: 5px;
+    border-radius: 7px;
+    background-color: rgb(111, 171, 173);
+}*/
+
+.description {
+    padding: 7px;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: rgba(151, 207, 240, 0.507);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.aboutInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.location {
+    text-align: right;
+}
+
+.status {
+    font-style: italic;
+}

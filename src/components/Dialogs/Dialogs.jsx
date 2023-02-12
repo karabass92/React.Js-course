@@ -6,8 +6,8 @@ import MessageItem from "./MessageItems/MessageItems";
 
 const Dialogs = (props) => {
 
-    let dialogs = props.dialogsData.map(d => <DialogItem name={d.name} id={d.id} />);
-    let messages = props.messagesData.map(m => <MessageItem message={m.message} />);
+    let dialogs = props.dialogsData.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />);
+    let messages = props.messagesData.map(m => <MessageItem key={m.id} message={m.message} />);
     let messageText = React.createRef();
     let onMessageTextChange = () => { props.changeMessageText(messageText.current.value) };
     let onAddMessage = () => { props.addMessage() };
