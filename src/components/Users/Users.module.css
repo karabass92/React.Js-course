@@ -26,6 +26,10 @@
     height: 20px;
     margin-top: 5px;
     border-radius: 7px;
+    background-color: rgba(151, 207, 240, 0.507);
+}
+
+.avatar button:hover {
     background-color: rgb(111, 171, 173);
 }
 
