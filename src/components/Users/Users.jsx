@@ -4,13 +4,32 @@ import style from './Users.module.css'
 import userPhoto from '../../assets/images/userPhoto.png'
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount)
         });
     };
+    componentDidUpdate() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items)
+        });
+    }
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items)
+        });
+    }
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++){
+            pages.push(i);
+        };
+
         return (
             <div className={style.container}>
                 <div>
@@ -38,13 +57,20 @@ class Users extends React.Component {
                         )
                     })}
                 </div>
+                <div className={style.paginationBlock}>
+                    {pages.map((p) => {
+                        return(
+                            <button onClick={() => this.onPageChanged(p)} className={this.props.currentPage === p ? style.selectedPage : style.nonSelectedPage}>{p}</button>
+                        )
+                    })}
+                </div>
             </div>
         );
     };
 };
 
 /* 
-functional component for Users
+functional component type for Users
 const Users = (props) => {
     let getUsers = () => {
         if (props.users.length === 0) {
