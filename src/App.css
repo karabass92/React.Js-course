@@ -1,6 +1,7 @@
 .app-wrapper {
     margin: 0 auto;
     width: 1440px;
+    min-height: 100vh;
     display: grid;
     grid-template-areas: "h h"
                          "n c";
@@ -10,6 +11,7 @@
 }
 
 .app-wrapper-content {
+    min-height: 100%;
     grid-area: c;
     background-color: rgb(111, 171, 173);
     border-radius: 10px;

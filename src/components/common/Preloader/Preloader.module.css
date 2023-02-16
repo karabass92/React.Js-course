@@ -1,0 +1,10 @@
+.preloaderContainer img {
+    display: block;
+    margin: auto;
+}
+
+.preloaderContainer {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
