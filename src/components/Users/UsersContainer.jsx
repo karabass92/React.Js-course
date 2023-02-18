@@ -6,7 +6,6 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 
 
-
 class UsersAPI extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
