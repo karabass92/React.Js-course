@@ -8,8 +8,8 @@ const TOGGLE_IS_FETCHING = 'IS_FETCHING';
 
 let initialSate = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 50,
+    pageSize: 10,
+    totalUsersCount: 100,
     currentPage: 1,
     isFetching: false
 };
