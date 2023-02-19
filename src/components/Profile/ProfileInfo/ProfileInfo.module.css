@@ -6,4 +6,14 @@
 
 .descriptionBlock {
     padding: 20px;
+    display: flex;
+}
+
+.descriptionItem {
+    margin-right: 30px;
+    color: white;
+}
+
+.descriptionItem img {
+    border-radius: 12px;
 }
