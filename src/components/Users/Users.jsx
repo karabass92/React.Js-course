@@ -2,15 +2,32 @@ import React from "react";
 import style from './Users.module.css'
 import userPhoto from '../../assets/images/userPhoto.png'
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { usersAPI } from "../../api/api";
 
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
 
-    for (let i = 1; i <= pagesCount; i++){
+    for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     };
+
+
+    const onFollowClick = (userId) => {
+        usersAPI.follow(userId).then(data => {
+            if (data.resultCode === 0) { props.follow(userId) }
+        });
+    };
+
+
+    const onUnFollowClick = (userId) => {
+        usersAPI.unfollow(userId).then(data => {
+            if (data.resultCode === 0) { props.unfollow(userId) }
+        });
+    };
+
 
     return (
         <div className={style.container}>
@@ -23,8 +40,8 @@ const Users = (props) => {
                                     <img src={u.photos.small || userPhoto} alt='avatar' />
                                 </NavLink>
                                 {u.followed
-                                    ? <button onClick={() => props.unfollow(u.id)}>unfollow</button>
-                                    : <button onClick={() => props.follow(u.id)}>follow</button>}
+                                    ? <button onClick={() => onUnFollowClick(u.id)}>unfollow</button>
+                                    : <button onClick={() => onFollowClick(u.id)}>follow</button>}
                             </div>
                             <div className={style.description}>
                                 <div className={style.aboutInfo}>
