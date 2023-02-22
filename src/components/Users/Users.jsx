@@ -2,7 +2,6 @@ import React from "react";
 import style from './Users.module.css'
 import userPhoto from '../../assets/images/userPhoto.png'
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 import { usersAPI } from "../../api/api";
 
 
@@ -14,20 +13,21 @@ const Users = (props) => {
         pages.push(i);
     };
 
-
     const onFollowClick = (userId) => {
+        props.toggleFollowingInPropgress(true, userId);
         usersAPI.follow(userId).then(data => {
             if (data.resultCode === 0) { props.follow(userId) }
         });
+        props.toggleFollowingInPropgress(false, userId);
     };
 
-
     const onUnFollowClick = (userId) => {
+        props.toggleFollowingInPropgress(true, userId);
         usersAPI.unfollow(userId).then(data => {
             if (data.resultCode === 0) { props.unfollow(userId) }
         });
+        props.toggleFollowingInPropgress(false, userId);
     };
-
 
     return (
         <div className={style.container}>
@@ -40,8 +40,8 @@ const Users = (props) => {
                                     <img src={u.photos.small || userPhoto} alt='avatar' />
                                 </NavLink>
                                 {u.followed
-                                    ? <button onClick={() => onUnFollowClick(u.id)}>unfollow</button>
-                                    : <button onClick={() => onFollowClick(u.id)}>follow</button>}
+                                    ? <button disabled={props.followingInPropgress.some(id => id === u.id)} onClick={() => onUnFollowClick(u.id)} >unfollow</button>
+                                    : <button disabled={props.followingInPropgress.some(id => id === u.id)} onClick={() => onFollowClick(u.id)} >follow</button>}
                             </div>
                             <div className={style.description}>
                                 <div className={style.aboutInfo}>
