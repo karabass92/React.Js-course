@@ -104,15 +104,27 @@ export const getUsers = (pageNumber, pageSize) => (dispatch) => {
         });
 };
 
-/*
+
 export const followUser = (button, userId) => (dispatch) => {
     button.disabled = true;
     dispatch(toggleFollowingInPropgress(true, userId));
     usersAPI.follow(userId).then(data => {
-        if (data.resultCode === 0) { follow(userId) }
+        if (data.resultCode === 0) { dispatch(follow(userId)) }
     });
+    button.disabled = false;
     dispatch(toggleFollowingInPropgress(false, userId));
 };
-*/
+
+
+export const unfollowUser = (button, userId) => (dispatch) => {
+    button.disabled = true;
+    dispatch(toggleFollowingInPropgress(true, userId));
+    usersAPI.unfollow(userId).then(data => {
+        if (data.resultCode === 0) { dispatch(unfollow(userId)) }
+    });
+    button.disabled = false;
+    dispatch(toggleFollowingInPropgress(false, userId));
+};
+
 
 export default usersReducer;

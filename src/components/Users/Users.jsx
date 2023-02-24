@@ -2,7 +2,6 @@ import React from "react";
 import style from './Users.module.css'
 import userPhoto from '../../assets/images/userPhoto.png'
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
 
 const Users = (props) => {
@@ -11,25 +10,6 @@ const Users = (props) => {
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
-    };
-
-    const onFollowClick = (button, userId) => {
-        button.disabled = true;
-        props.toggleFollowingInPropgress(true, userId);
-        usersAPI.follow(userId).then(data => {
-            if (data.resultCode === 0) { props.follow(userId) }
-        });
-        props.toggleFollowingInPropgress(false, userId);
-    };
-
-    const onUnFollowClick = (button, userId) => {
-        button.disabled = true;
-        props.toggleFollowingInPropgress(true, userId);
-        usersAPI.unfollow(userId).then(data => {
-            if (data.resultCode === 0) { props.unfollow(userId) }
-        });
-        button.disabled = false;
-        props.toggleFollowingInPropgress(false, userId);
     };
 
     return (
@@ -43,8 +23,8 @@ const Users = (props) => {
                                     <img src={u.photos.small || userPhoto} alt='avatar' />
                                 </NavLink>
                                 {u.followed
-                                    ? <button onClick={(event) => onUnFollowClick(event.target, u.id)} >unfollow</button>
-                                    : <button disabled={props.followingInPropgress.includes(u.id)} onClick={(event) => onFollowClick(event.target, u.id)} >follow</button>}
+                                    ? <button disabled={props.followingInPropgress.includes(u.id)} onClick={(event) => props.unfollowUser(event.target, u.id)} >unfollow</button>
+                                    : <button disabled={props.followingInPropgress.includes(u.id)} onClick={(event) => props.followUser(event.target, u.id)} >follow</button>}
                             </div>
                             <div className={style.description}>
                                 <div className={style.aboutInfo}>
