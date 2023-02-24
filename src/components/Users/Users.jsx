@@ -15,6 +15,7 @@ const Users = (props) => {
 
     const onFollowClick = (button, userId) => {
         button.disabled = true;
+        props.toggleFollowingInPropgress(true, userId);
         usersAPI.follow(userId).then(data => {
             if (data.resultCode === 0) { props.follow(userId) }
         });
@@ -23,9 +24,11 @@ const Users = (props) => {
 
     const onUnFollowClick = (button, userId) => {
         button.disabled = true;
+        props.toggleFollowingInPropgress(true, userId);
         usersAPI.unfollow(userId).then(data => {
             if (data.resultCode === 0) { props.unfollow(userId) }
         });
+        button.disabled = false;
         props.toggleFollowingInPropgress(false, userId);
     };
 
@@ -40,7 +43,7 @@ const Users = (props) => {
                                     <img src={u.photos.small || userPhoto} alt='avatar' />
                                 </NavLink>
                                 {u.followed
-                                    ? <button /*{disabled={props.followingInPropgress.includes(u.id)}}*/ onClick={(event) => onUnFollowClick(event.target, u.id)} >unfollow</button>
+                                    ? <button onClick={(event) => onUnFollowClick(event.target, u.id)} >unfollow</button>
                                     : <button disabled={props.followingInPropgress.includes(u.id)} onClick={(event) => onFollowClick(event.target, u.id)} >follow</button>}
                             </div>
                             <div className={style.description}>
