@@ -1,18 +1,15 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { setUserProfile } from "../../redux/profileReducer";
+import { getProfile } from "../../redux/profileReducer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
-        if (!userId) {userId = 2};
-        usersAPI.getUserProfile(userId).then(data => {
-                this.props.setUserProfile(data)
-            });
+        if (!userId) { userId = 2 };
+        this.props.getProfile(userId);
     };
     render() {
         return (
@@ -43,4 +40,4 @@ function withRouter(Component) {
 };
 
 
-export default connect(mapStateToProps, {setUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, { getProfile })(withRouter(ProfileContainer));
