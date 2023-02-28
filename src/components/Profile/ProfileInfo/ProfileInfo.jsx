@@ -1,6 +1,7 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import classes from './ProfileInfo.module.css'
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -43,9 +44,9 @@ const ProfileInfo = (props) => {
                 <div className={classes.descriptionItem}>
                     <div>Имя:{props.profile.fullName ? props.profile.fullName : 'Не указано'}</div>
                     <div>Поиск работы:{props.profile.lookingForAJob ? props.profile.lookingForAJobDescription : 'Нет'}</div>
-
                 </div>
             </div>
+            <ProfileStatus status='Hello my frineds' />
         </div>
     );
 };

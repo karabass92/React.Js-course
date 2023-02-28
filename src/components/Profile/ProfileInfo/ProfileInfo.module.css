@@ -17,3 +17,12 @@
 .descriptionItem img {
     border-radius: 12px;
 }
+
+.statusInfo {
+    height: 40px;
+    width: 950px;
+    margin: 20px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.199);
+    background-color: rgba(151, 207, 240, 0.507);
+}
