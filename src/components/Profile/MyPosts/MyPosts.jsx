@@ -8,7 +8,6 @@ const MyPosts = (props) => {
     let posts = props.postsData.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount} />);
 
     const addNewPost = (formData) => {
-        console.log(formData.newPostText);
         props.addPost(formData.newPostText);
     };
 
