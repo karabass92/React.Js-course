@@ -3,7 +3,7 @@ import { getUsers, followUser, unfollowUser } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import { getPageSize, getUsersList, getTotalUsersCount, getFollowingStatus, getFetchingStatus, getCurrentPage } from "../../redux/usersSelectors";
+import { getPageSize, getUsersListSuperSelector, getTotalUsersCount, getFollowingStatus, getFetchingStatus, getCurrentPage } from "../../redux/usersSelectors";
 
 
 class UsersAPI extends React.Component {
@@ -48,7 +48,7 @@ class UsersAPI extends React.Component {
 
 let mapStateToProrps = (state) => {
     return {
-        users: getUsersList(state),
+        users: getUsersListSuperSelector(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
