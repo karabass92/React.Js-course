@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from './ProfileInfo.module.css';
 /*
 changeStatus = (e) => {
@@ -29,6 +29,10 @@ const ProfileStatus = (props) => {
     const changeStatus = (e) => {
         setStatus(e.currentTarget.value);
     };
+
+    useEffect( () => {
+        setStatus(props.status)
+    }, [props.status]);
 
     return (
         <div>
