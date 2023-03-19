@@ -1,13 +1,13 @@
 import { usersAPI } from "../api/api";
 
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'IS_FETCHING';
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const FOLLOW = 'users/FOLLOW';
+const UNFOLLOW = 'users/UNFOLLOW';
+const SET_USERS = 'users/SET_USERS';
+const SET_CURRENT_PAGE = 'users/SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'users/SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'users/IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'users/TOGGLE_IS_FOLLOWING_PROGRESS';
 
 
 let initialSate = {
@@ -95,33 +95,30 @@ export const toggleFollowingInPropgress = (followingInPropgress, userId) => {
 };
 
 
-export const getUsers = (pageNumber, pageSize) => (dispatch) => {
+export const getUsers = (pageNumber, pageSize) => async (dispatch) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(setIsFetching(true));
-    usersAPI.getUsers(pageNumber, pageSize).then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(setIsFetching(false));
-        });
+    let data = await usersAPI.getUsers(pageNumber, pageSize);
+    dispatch(setUsers(data.items));
+    dispatch(setIsFetching(false));
 };
 
 
-export const followUser = (button, userId) => (dispatch) => {
+export const followUser = (button, userId) => async (dispatch) => {
     button.disabled = true;
     dispatch(toggleFollowingInPropgress(true, userId));
-    usersAPI.follow(userId).then(data => {
-        if (data.resultCode === 0) { dispatch(follow(userId)) }
-    });
+    let data = await usersAPI.follow(userId);
+    if (data.resultCode === 0) { dispatch(follow(userId)) }
     button.disabled = false;
     dispatch(toggleFollowingInPropgress(false, userId));
 };
 
 
-export const unfollowUser = (button, userId) => (dispatch) => {
+export const unfollowUser = (button, userId) => async (dispatch) => {
     button.disabled = true;
     dispatch(toggleFollowingInPropgress(true, userId));
-    usersAPI.unfollow(userId).then(data => {
-        if (data.resultCode === 0) { dispatch(unfollow(userId)) }
-    });
+    let data = await usersAPI.unfollow(userId);
+    if (data.resultCode === 0) { dispatch(unfollow(userId)) }
     button.disabled = false;
     dispatch(toggleFollowingInPropgress(false, userId));
 };

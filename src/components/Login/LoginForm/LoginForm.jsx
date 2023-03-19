@@ -5,16 +5,16 @@ import { Input } from "../../common/FormsControls/FormsControls";
 import classes from './LoginForm.module.css'
 
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field 
                 name="email" 
                 placeholder={'login'} 
                 component={Input} 
                 validate={[requiredField]}
-                className={props.error ? classes.error : null} />
+                className={error ? classes.error : null} />
             </div>
             <div>
                 <Field 
@@ -23,12 +23,12 @@ const LoginForm = (props) => {
                 type={'password'}
                 component={Input} 
                 validate={[requiredField]} 
-                className={props.error ? classes.error : null} />
+                className={error ? classes.error : null} />
             </div>
             <div>
                 <Field name="remeberMe" component={'input'} type={'checkbox'} />Remember me
             </div>
-            {props.error ? <span className={classes.errorMessage}>{props.error}</span> : null}
+            {error ? <span className={classes.errorMessage}>{error}</span> : null}
             <div>
                 <button type={'submit'}>Login</button>
             </div>
